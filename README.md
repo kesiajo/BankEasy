@@ -1,4 +1,9 @@
 <h1 align="center">Bank Easy</h1>
+
+<p align="center">
+  <img src="/images/BankEasy_2.gif">
+</p>
+
 <h3 align="center">Team hackOverflow</h3>
 
 ## About
