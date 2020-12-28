@@ -5,4 +5,4 @@
 </p>
 
 ##Flowchart
-<img src="/images/BEKey/flowchart.png">
+<img src="/BEKey/flowchart.png">
