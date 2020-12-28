@@ -69,8 +69,8 @@ class BEKey:
 		return decoded_msg['account_balance']
 
 	def encrypt(self, amount):
-	    encoded_message = amount.encode()
-	    return self.fernet_encryptor.encrypt(encoded_message).decode()
+		encoded_message = amount.encode()
+		return self.fernet_encryptor.encrypt(encoded_message).decode()
 
 	def decrypt(self, account_balance):
 		decrypted_message = self.fernet_encryptor.decrypt(account_balance).encode()
@@ -102,14 +102,14 @@ class BEKey:
 		return ''.join([l for l in ciphertext])
 
 	def vignere_decrypt(self, ciphertext):
-	    key_length = len(self.key)
-	    key_as_int = [ord(i) for i in self.key]
-	    ciphertext_int = [ord(i) for i in ciphertext]
-	    plaintext = ''
-	    for i in range(len(ciphertext_int)):
-	        value = (ciphertext_int[i] - key_as_int[i % key_length]) % 26
-	        plaintext += chr(value + 65)
-	    return plaintext
+		key_length = len(self.key)
+		key_as_int = [ord(i) for i in self.key]
+		ciphertext_int = [ord(i) for i in ciphertext]
+		plaintext = ''
+		for i in range(len(ciphertext_int)):
+			value = (ciphertext_int[i] - key_as_int[i % key_length]) % 26
+			plaintext += chr(value + 65)
+		return plaintext
 
 	def base_decode(self, ciphertext):
 		base64_bytes = ciphertext.encode('ascii')
@@ -129,7 +129,7 @@ class BEKey:
 		IFSC Code          \t {self.ifsc_code}
 		Branch             \t {self.branch}
 		Account holder     \t {self.account_holder}
-		Latest TRansaction \t {self.latest_transaction}
+		Latest Transaction \t {self.latest_transaction}
 		'''
 
 	# def encrypt(self, account_balance):
@@ -145,4 +145,7 @@ class BEKey:
 	# 	return result
 
 if __name__ == '__main__':
-	
+	print('BE Key Demo')
+	print('''
+		Menu
+	''')
