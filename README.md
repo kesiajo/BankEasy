@@ -14,3 +14,6 @@ A connected, secure and contactless banking system, **Bank Easy**, that involves
 * E-Wallet
 
 ### [Check out the Project demo video here!](https://youtu.be/PvgbTnNox_k)
+
+## Technical Stack & Architectural Flow 
+![](/images/architecture.png)
