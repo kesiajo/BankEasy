@@ -6,18 +6,44 @@ from iota import Address
 from iota import Tag
 from iota import TryteString
 import json
+import pickle
+
 
 class BEKey:
-	def __init__(self, key):
-		self.key = b'3hKY9MsG_9gTgWUebVk_GkoHp29oYLaKisJHig7hTTc='
-		self.account_number = '2710060627043004'
-		self.ifsc_code = 'BE0002000'
-		self.branch = "swiss"
-		self.account_holder = "Admin"
-		self.tangle_address = 'BANKEASY9SWISS9ADMIN9999999999999999999999999999999999999999999999999999999999999'
-		self.latest_transaction = 'KMVGVIAOGJWABHPCJYAXEEGGGESH9NXIRELVFHLFBLPC9AUSVMCHXZKRONIHHWRIUYTUXBR9QADKUN999'
+	def __init__(self):
+		self.key = ''
+		self.account_number = ''
+		self.ifsc_code = ''
+		self.branch = ''
+		self.account_holder = ''
+		self.tangle_address = ''
+		self.latest_transaction = ''
+		self.load_details()
 		self.api = Iota('https://nodes.devnet.iota.org:443', testnet = True)
 		self.fernet_encryptor = Fernet(self.key)
+
+	def load_details(self):
+		with open('account_details.db', 'rb') as user_file:
+			user_details = pickle.load(user_file)
+			self.key = user_details['key']
+			self.account_number = user_details['account_number']
+			self.ifsc_code = user_details['ifsc_code']
+			self.branch = user_details['branch']
+			self.account_holder = user_details['account_holder']
+			self.tangle_address = user_details['tangle_address']
+			self.latest_transaction = user_details['latest_transaction']
+
+	def update_details(self):
+		with open('account_details.db', 'wb') as user_file:
+			user_details = {}
+			user_details['key'] = self.key 
+			user_details['account_number'] = self.account_number
+			user_details['ifsc_code'] = self.ifsc_code
+			user_details['branch'] = self.branch
+			user_details['account_holder'] = self.account_holder
+			user_details['tangle_address'] = self.tangle_address
+			user_details['latest_transaction'] = self.latest_transaction
+			pickle.dump(user_details, user_file)
 
 	def tangle_transaction_commit(self, account_balance):
 		msg_dict = {
@@ -27,9 +53,9 @@ class BEKey:
 			"account_holder": self.account_holder,
 			"account_balance": account_balance
 		}
-		message = TryteString.from_unicode(str(d))
+		message = TryteString.from_unicode(json.dumps(msg_dict))
 		tx = ProposedTransaction(
-			address = Address(self.address),
+			address = Address(self.tangle_address),
 			message = message,
 			value = 0
 		)
@@ -44,10 +70,10 @@ class BEKey:
 
 	def encrypt(self, amount):
 	    encoded_message = amount.encode()
-	    return fernet_encryptor.encrypt(encoded_message)
+	    return self.fernet_encryptor.encrypt(encoded_message).decode()
 
 	def decrypt(self, account_balance):
-		decrypted_message = fernet_encryptor.decrypt(account_balance)
+		decrypted_message = self.fernet_encryptor.decrypt(account_balance).encode()
 		return decrypted_message.decode()
 
 	def withdraw(self, amount):
@@ -57,6 +83,7 @@ class BEKey:
 			account_balance -= amount
 			new_account_balance = self.encrypt(account_balance)
 			self.tangle_transaction_commit(new_account_balance)
+			self.update_details()
 			return True
 		else:
 			print("Not Enough Balance!")
@@ -107,3 +134,6 @@ class BEKey:
 	# 	print(first_decryption)
 	# 	result = self.base_decode(first_decryption)
 	# 	return result
+
+if __name__ == '__main__':
+	
