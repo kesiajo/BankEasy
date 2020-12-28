@@ -46,6 +46,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: InkWell(
         child: Stack(
           fit: StackFit.expand,
@@ -56,9 +57,10 @@ class _HomeState extends State<Home> {
                 Expanded(
                   flex: 3,
                   child: Container(
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
+                      child:
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
                         Spacer(),
                         IconButton(
                             icon: Icon(Icons.qr_code_scanner_rounded),
@@ -92,17 +94,20 @@ class _HomeState extends State<Home> {
                 Expanded(
                   flex: 7,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      RaisedButton(
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Colors.white)),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => QRhome()));
                         },
                         child: Container(
                           width: 120.0,
-                          height: 150.0,
+                          height: 120.0,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: <Color>[
@@ -112,20 +117,30 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                          child: const Text('Cash Withdrawal',
-                              style: TextStyle(fontSize: 16)),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: const Text('Cash Withdrawal',
+                                style: TextStyle(
+                                  fontSize: 15.5,
+                                ),
+                                textAlign: TextAlign.center),
+                          ),
                         ),
                         textColor: Colors.white,
-                        elevation: 7,
+                        color: Colors.white,
                       ),
-                      RaisedButton(
+                      SizedBox(width: 40),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Colors.white)),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => QRhome()));
                         },
                         child: Container(
                           width: 120.0,
-                          height: 150.0,
+                          height: 120.0,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: <Color>[
@@ -135,13 +150,17 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                          child: const Text('Cash Deposition',
-                              style: TextStyle(
-                                fontSize: 16,
-                              )),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: const Text('Cash Deposition',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                                textAlign: TextAlign.center),
+                          ),
                         ),
                         textColor: Colors.white,
-                        elevation: 7,
+                        color: Colors.white,
                       ),
                     ],
                   ),

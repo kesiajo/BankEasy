@@ -86,7 +86,8 @@ class _QRhomeState extends State<QRhome> {
                       ),
                       Text(
                           "Align the QR Code displayed in the ATM screen \nto the middle of the scanner\n to initiate session",
-                          style: TextStyle(color: Colors.white)),
+                          style: TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center),
                     ],
                   )),
                 ),
