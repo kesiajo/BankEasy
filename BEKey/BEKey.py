@@ -123,6 +123,15 @@ class BEKey:
 		base64_message = base64_bytes.decode('ascii')
 		return base64_message
 
+	def __str__(self):
+		return '''
+		Account number     \t {self.account_number}
+		IFSC Code          \t {self.ifsc_code}
+		Branch             \t {self.branch}
+		Account holder     \t {self.account_holder}
+		Latest TRansaction \t {self.latest_transaction}
+		'''
+
 	# def encrypt(self, account_balance):
 	# 	first_encryption = self.base_encode(account_balance)
 	# 	print(first_encryption)
