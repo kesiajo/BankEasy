@@ -25,3 +25,12 @@ Our idea would be, the incorporation of the NFC technology in mobiles and modern
 
 ## Technical Stack & Architectural Flow 
 ![](/images/architecture.png)
+
+* **Mobile Application**
+  * [Flutter](https://flutter.dev/) *(Android Development SDK using Dart)*
+  * [Google Maps SDK](https://developers.google.com/maps/documentation/android-sdk/intro) *(Maps and Location details of ATMs)*
+* **Database**
+  * [Firebase](https://firebase.google.com/) *(NoSQL : User data & Requests  from the mobile application)*
+* **Tangle Network:**
+  * [IOTA Comnet (public) Tangle Network](https://comnet.thetangle.org/)
+  > For more information regarding the tangle network, visit [https://www.iota.org/](https://www.iota.org/)
