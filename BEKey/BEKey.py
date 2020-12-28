@@ -73,7 +73,7 @@ class BEKey:
 		return self.fernet_encryptor.encrypt(encoded_message).decode()
 
 	def decrypt(self, account_balance):
-		decrypted_message = self.fernet_encryptor.decrypt(account_balance).encode()
+		decrypted_message = self.fernet_encryptor.decrypt(account_balance.encode())
 		return decrypted_message.decode()
 
 	def withdraw(self, amount):
@@ -127,13 +127,13 @@ class BEKey:
 		encrypted_account_balance = self.tangle_transaction_read()
 		account_balance = self.decrypt(encrypted_account_balance)
 		return '''
-		Account number     \t {self.account_number}
-		IFSC Code          \t {self.ifsc_code}
-		Branch             \t {self.branch}
-		Account holder     \t {self.account_holder}
-		Latest Transaction \t {self.latest_transaction}
-		Account Balance    \t {account_balance}
-		'''
+		Account number     \t %s
+		IFSC Code          \t %s
+		Branch             \t %s
+		Account holder     \t %s
+		Latest Transaction \t %s
+		Account Balance    \t %s
+		'''%(self.account_number, self.ifsc_code, self.branch, self.account_holder, self.latest_transaction, account_balance)
 
 	# def encrypt(self, account_balance):
 	# 	first_encryption = self.base_encode(account_balance)
