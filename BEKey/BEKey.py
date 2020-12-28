@@ -63,7 +63,7 @@ class BEKey:
 		self.latest_transaction = result['bundle'].tail_transaction.hash
 
 	def tangle_transaction_read(self):
-		bundle = api.get_bundles(self.latest_transaction)
+		bundle = self.api.get_bundles(self.latest_transaction)
 		message = bundle['bundles'][0].tail_transaction.signature_message_fragment
 		decoded_msg = json.loads(message.decode())
 		return decoded_msg['account_balance']
@@ -124,12 +124,15 @@ class BEKey:
 		return base64_message
 
 	def __str__(self):
+		encrypted_account_balance = self.tangle_transaction_read()
+		account_balance = self.decrypt(encrypted_account_balance)
 		return '''
 		Account number     \t {self.account_number}
 		IFSC Code          \t {self.ifsc_code}
 		Branch             \t {self.branch}
 		Account holder     \t {self.account_holder}
 		Latest Transaction \t {self.latest_transaction}
+		Account Balance    \t {account_balance}
 		'''
 
 	# def encrypt(self, account_balance):
