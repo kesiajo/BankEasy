@@ -1,16 +1,16 @@
-# bank_easy
+<h1 align="center">Bank Easy</h1>
+<h3 align="center">Team hackOverflow</h3>
 
-A new Flutter project.
+## About
+A connected, secure and contactless banking at ATM system, **Bank Easy** that involves the incorporation of the NFC technology in mobiles and modern credit/debit cards along side secure QR scanning paired up with a two-factor authentication hardware key we call BEKey, wired with **Tangle** networking to provide a hassle-free contact-less banking experience to withdraw money from or to deposit it to the ATM.
 
-## Getting Started
+## Features
+* Cash Withdrawal and Deposit
+* Nearest ATM
+* Faster Payment Service
+* Rush Hours Prediction
+* Account balance and transaction history
+* Mobile Recharge service
+* E-Wallet
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### [Check out the Project demo video here!](https://youtu.be/PvgbTnNox_k)
