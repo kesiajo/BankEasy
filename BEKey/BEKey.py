@@ -145,7 +145,7 @@ class BEKey:
 	# 	return result
 
 if __name__ == '__main__':
+	be_key = BEKey()
 	print('BE Key Demo')
-	print('''
-		Menu
-	''')
+	print(be_key)
+
