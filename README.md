@@ -9,7 +9,10 @@
 ## About
 A connected, secure and contactless banking system, **Bank Easy**, that involves the incorporation of the NFC technology in mobiles and modern credit/debit cards along side secure QR scanning paired up with a two-factor authentication hardware key we call BEKey, wired with **Tangle** networking to provide a hassle-free contact-less banking experience to withdraw money from or to deposit it to the ATM.
 
-## Features
+## Solution
+Our idea would be, the incorporation of the NFC technology in mobiles and modern credit/debit cards alongside secure QR scanning paired up with Tangle networking alongside a 2 factor authentication hardware provided by us know as BEKey to provide a hassle-free contact-less banking experience to withdraw money from or to deposit it to the ATM. Customers are given the provision to withdraw as well as deposit their money in a secure manner by maintaining the safety guidelines without physically interacting with the teller machines. The driver mobile application Bank Easy is built using Flutter and offers different utilities to customers making banking and other services easier. The BEKey is a USB hardware addition to the segment to stabilize the 2FA standard in banking. Each of these USBs would consist of a unique key that authenticates the transaction of the users. The technologies stack consists of a Tangle based system, real-time series based ML model. The transaction history will be recorded in the Tangle based system- an upcoming technology that can streamline the transfer of encrypted data along with maintaining a high-level of data protection, integrity, and data access management.
+
+## Services
 * Cash Withdrawal and Deposit
 * Nearest ATM
 * Faster Payment Service
